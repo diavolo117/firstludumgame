@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4oitq8di54vc"]
+
+[ext_resource type="Script" path="res://Новая папка/new_script.gd" id="1_6fxmc"]
+[ext_resource type="Texture2D" uid="uid://bad8ql1fj66hr" path="res://988.jpg" id="1_n3o2f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4fdqv"]
+
+[node name="barel" type="Node2D"]
+script = ExtResource("1_6fxmc")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_4fdqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, -1)
+scale = Vector2(0.049505, 0.100671)
+texture = ExtResource("1_n3o2f")
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2(-11, 1)
+target_position = Vector2(0, 20)

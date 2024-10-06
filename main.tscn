@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://gt7pw07a5c2g"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ciyop"]
+[ext_resource type="PackedScene" uid="uid://haygpmst53mw" path="res://parallax_background.tscn" id="2_05ppp"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_ciyop")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 404.0
+offset_top = 169.0
+offset_right = 736.0
+offset_bottom = 260.0
+theme_override_font_sizes/font_size = 25
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 404.0
+offset_top = 302.0
+offset_right = 736.0
+offset_bottom = 393.0
+theme_override_font_sizes/font_size = 25
+text = "Quit"
+
+[node name="BG" parent="." instance=ExtResource("2_05ppp")]
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
