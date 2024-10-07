@@ -1,74 +1,41 @@
-[gd_scene load_steps=10 format=3 uid="uid://xcqivurrnevk"]
+[gd_scene load_steps=6 format=3 uid="uid://xcqivurrnevk"]
 
-[ext_resource type="Texture2D" uid="uid://bad8ql1fj66hr" path="res://988.jpg" id="1_okmp6"]
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_tyi0y"]
-[ext_resource type="Texture2D" uid="uid://c7lfbkyx2uqed" path="res://988 (1).jpg" id="2_00qjf"]
-[ext_resource type="Script" path="res://Новая папка/area_2d.gd" id="3_sxl6a"]
+[ext_resource type="Script" path="res://area_2d.gd" id="3_o14nn"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dx4lk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xio2"]
+size = Vector2(19, 26)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k17gi"]
+load_path = "res://.godot/imported/моб2.png-6f435301716f96f6a48dcf8010b77f65.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obxbv"]
-size = Vector2(20, 23)
-
-[sub_resource type="Animation" id="Animation_cauh3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_00qjf")]
-}
-
-[sub_resource type="Animation" id="Animation_wb3qp"]
-resource_name = "die"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("1_okmp6"), ExtResource("2_00qjf")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fvm7s"]
-_data = {
-"RESET": SubResource("Animation_cauh3"),
-"die": SubResource("Animation_wb3qp")
-}
+size = Vector2(25.5, 31.875)
 
 [node name="enemy" type="CharacterBody2D"]
 script = ExtResource("1_tyi0y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_dx4lk")
+position = Vector2(0.5, -3)
+shape = SubResource("RectangleShape2D_4xio2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.5, -2.86102e-06)
-scale = Vector2(0.0519802, 0.0939597)
-texture = ExtResource("2_00qjf")
+position = Vector2(-2, -0.500001)
+scale = Vector2(0.7, 0.85)
+texture = SubResource("CompressedTexture2D_k17gi")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
-script = ExtResource("3_sxl6a")
+script = ExtResource("3_o14nn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1)
+position = Vector2(0, -1.0625)
 shape = SubResource("RectangleShape2D_obxbv")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-10, 0)
 target_position = Vector2(0, 30)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_fvm7s")
-}
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(-15, 0)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

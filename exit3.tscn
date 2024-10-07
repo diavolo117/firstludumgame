@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0qdr1ljr24lo"]
+
+[ext_resource type="Script" path="res://exit3.gd" id="1_4qfow"]
+[ext_resource type="Texture2D" uid="uid://c40ijkbdnog7j" path="res://scenes/пень.png" id="2_w8jvm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4grf"]
+size = Vector2(16, 17)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+script = ExtResource("1_4qfow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -11)
+shape = SubResource("RectangleShape2D_j4grf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -11)
+texture = ExtResource("2_w8jvm")
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]

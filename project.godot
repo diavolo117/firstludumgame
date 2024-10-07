@@ -22,6 +22,7 @@ Gameload="*res://Новая папка/gamemanagment/gameload.gd"
 [global_group]
 
 Enemies=""
+hitbox=""
 
 [input]
 

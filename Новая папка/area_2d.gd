@@ -1,13 +1,18 @@
 extends Area2D
 @onready var collision = $CollisionShape2D
-var healbr = 3
+var healbr = 1
+@export var knock = false
 @onready var enemy = $".."
+var test = 1
+
 func take_damage(damage):
-	healbr -= 1
+	healbr -= damage
+	knock = true
 	if healbr <= 0:
 		death()
+	
 func death():
-	get_node("../AnimationPlayer").play("die")
+	
 	timerdeath()
 	
 func timerdeath():

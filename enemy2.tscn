@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmk5886wr83do"]
+
+[ext_resource type="Script" path="res://enemy_2.gd" id="1_hc35g"]
+[ext_resource type="Texture2D" uid="uid://2ffej1p3kmjt" path="res://scenes/иоб3.png" id="2_g7esd"]
+[ext_resource type="Script" path="res://Новая папка/area_2d.gd" id="3_4f1bn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2uhfm"]
+size = Vector2(26, 27.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2jm3"]
+size = Vector2(27, 30)
+
+[node name="secanemy" type="CharacterBody2D"]
+script = ExtResource("1_hc35g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemies"]]
+position = Vector2(1, 0.625)
+shape = SubResource("RectangleShape2D_2uhfm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
+scale = Vector2(-1.54475, 1.51811)
+texture = ExtResource("2_g7esd")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemies"]]
+script = ExtResource("3_4f1bn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["Enemies"]]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_x2jm3")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

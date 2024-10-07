@@ -3,4 +3,4 @@ var currentcheck : checkpoint
 var player : Player
 func respawn():
 	if currentcheck != null:
-		player.position = currentcheck.global_position
+		get_tree().reload_current_scene()

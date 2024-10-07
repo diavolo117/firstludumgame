@@ -6,4 +6,5 @@ func _on_quit_pressed():
 
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://level.tscn")
+	var loadscene1 = load("res://scenes/lvl1.tscn")
+	get_tree().change_scene_to_packed(loadscene1)
